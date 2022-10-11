@@ -1,0 +1,35 @@
+// ZOPSMARTHIRING
+// ZMHN 0,4,8 (3->3+1->4)
+// OSATIIG 1,3,5 (3->3-2->1)
+// PRR 2,6,10 (3->3-1)
+// ZMHNOSATIIGPRR RESULT
+
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+	    Scanner sc = new Scanner(System.in);
+	    String s = sc.next();
+	    int n = sc.nextInt();
+		System.out.println(myFunction(s,n));
+	}
+	
+	public static String myFunction(String a, int b) {
+	    String str = "";
+	    if(a.length()<2) {
+	        return a;
+	    }
+	    int n = b+b-2;
+	    for(int i = 0; i < b; i++){
+            int cur = i;
+            while(cur < a.length()){
+                str = str+a.charAt(cur);
+                cur += n;
+                if(i > 0 && i < b - 1 && (cur-i-i) < a.length()){
+                    str = str+a.charAt(cur - i - i);
+                }
+            }
+        }
+        return str;
+	}
+}
